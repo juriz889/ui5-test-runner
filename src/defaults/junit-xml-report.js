@@ -48,7 +48,13 @@ async function main () {
 }
     >`)
         if (test.screenshot) {
-          o(`<system-out>[[ATTACHMENT|${join(basename(reportDir), qunitPage.id, test.screenshot)}]]</system-out>`)
+          o(`      <system-out>[[ATTACHMENT|${join(basename(reportDir), qunitPage.id, test.screenshot)}]]</system-out>`)
+        }else {
+          const screenshots = test.logs?.filter(log => log.screenshot)
+          .map(screenshot => `[[ATTACHMENT|${join(basename(reportDir), qunitPage.id, screenshot)}]]`);
+          if (screenshots?.length > 0) {
+            o(`      <system-out>${screenshots.join('\n')}</system-out>`);
+          }
         }
         if (test.skip) {
           o('      <skipped></skipped>')
