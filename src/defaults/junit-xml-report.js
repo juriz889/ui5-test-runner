@@ -51,7 +51,7 @@ async function main () {
           o(`      <system-out>[[ATTACHMENT|${join(basename(reportDir), qunitPage.id, test.screenshot)}]]</system-out>`)
         }else {
           const screenshots = test.logs?.filter(log => log.screenshot)
-          .map(screenshot => `[[ATTACHMENT|${join(basename(reportDir), qunitPage.id, screenshot)}]]`);
+          .map(log => `[[ATTACHMENT|${join(basename(reportDir), qunitPage.id, log.screenshot)}]]`);
           if (screenshots?.length > 0) {
             o(`      <system-out>${screenshots.join('\n')}</system-out>`);
           }
