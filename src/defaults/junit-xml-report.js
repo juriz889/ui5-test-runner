@@ -53,8 +53,8 @@ async function main () {
           const screenshots = test.logs?.filter(log => log.screenshot)
           .map(log => `[[ATTACHMENT|${join(basename(reportDir), qunitPage.id, log.screenshot)}]]`);
           if (screenshots?.length > 0) {
-            o(`      <system-out>${screenshots.join('\n')}</system-out>`);
-          }
+            o(`      <system-out>${screenshots[0]}</system-out>`);
+          } 
         }
         if (test.skip) {
           o('      <skipped></skipped>')
